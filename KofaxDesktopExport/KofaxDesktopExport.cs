@@ -9,6 +9,7 @@ namespace KofaxDesktopExport
 {
     public class KofaxDesktopExport :IReleaseScript2
     {
+        //TODO: _workingMode should be configurable
         private ReleaseMode                 _workingMode    = ReleaseMode.MultiPage;
         private IDocumentOutputConverter    _docConverter   = null;
         private IPageOutputConverter        _pageConverter  = null;
@@ -102,8 +103,6 @@ namespace KofaxDesktopExport
         {
             if (string.IsNullOrEmpty(_exportFileName))
                 throw new Exception("Please specify a file name");
-
-           // MessageBox.Show(Path.GetExtension(_exportFileName).ToUpper());
 
             foreach (IExporter exporter in exporters)
                 if (exporter.DefaultExtension == Path.GetExtension(_exportFileName).ToUpper().TrimStart('.'))
